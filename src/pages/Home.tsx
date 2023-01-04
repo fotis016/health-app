@@ -1,16 +1,30 @@
-import { Paragraph } from "./Homestyles"
-export interface HomePageProps {}
 
-export const HomePage: React.FC<HomePageProps> = props => {
+// import { Paragraph } from "./Homestyles"
+// import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
+// import img1 from '../theme/icons/pic1.jpg'
+// import Carousel from "react-responsive-carousel/lib/ts/components/Carousel"
+// import { Carousel } from '@sefailyasoz/react-carousel'
+// import { Carousel } from 'react-carousel-minimal';
+import { Splide, SplideSlide } from '@splidejs/react-splide';
+
+const options = {
+  rewind: true,
+  perPage: 1
+};
+
+
+export const HomePage = () => {
     return (
-      <div>
-        <h1 >Home page</h1>
-        <Paragraph>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi, qui.
-          Hic animi distinctio et maiores, ab nostrum at neque. Iusto minus
-          perspiciatis vitae unde? In quibusdam nulla perspiciatis laboriosam ex.
-        </Paragraph>
-      </div>
+      <>
+        <Splide options={options}>
+          <SplideSlide>
+            <img src="https://i.imgur.com/NttHNjM.jpeg" alt="test1"/>
+          </SplideSlide>
+          <SplideSlide>
+            <img src="https://i.imgur.com/B7EQUTq.jpg" alt="test2"/>
+          </SplideSlide>
+        </Splide>
+      </>
     )
 }
 export default HomePage
