@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import styled from "styled-components"
 import colors from '../theme/'
+import {ReactComponent as Icon} from '../theme/icons/logo.svg'
 
 type NavbarProps = {
   extend: boolean;
@@ -19,7 +20,7 @@ export const NavbarLinkContainer = styled("div")`
   display: flex;
 `;
 export const NavbarLink = styled(Link)`
-  color: ${colors.neutral.W};
+  color: ${colors.neutral.w};
   font-size: x-large;
   font-family: OpenSans-Regular, sans-serif;
   text-decoration: none;
@@ -36,7 +37,7 @@ export const NavbarLink = styled(Link)`
   }
 `;
 export const NavbarLinkExtended = styled(Link)`
-  color: ${colors.neutral.W};
+  color: ${colors.neutral.w};
   font-size: x-large;
   font-family: OpenSans-Regular, sans-serif;
   text-decoration: none;
@@ -54,7 +55,7 @@ export const ButtonLink = styled("button")`
   height: 50px;
   background: none;
   border: none;
-  color: ${colors.neutral.W};
+  color: ${colors.neutral.w};
   font-size: 45px;
   cursor: pointer;
   @media (min-width: 700px) {
@@ -69,3 +70,9 @@ export const ExtendedNavbar = styled("div")`
     display: none;
   }
 `;
+
+export const Logo = styled(Icon)`
+  height: 50px;
+  width: 50px;
+  padding-top: 4px;
+`

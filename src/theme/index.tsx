@@ -9,7 +9,7 @@ const colors = {
 
  neutral: {
   50: '#738C88',
-  W: '#FFFFFF'
+  w: '#FFFFFF'
  }
 }
 

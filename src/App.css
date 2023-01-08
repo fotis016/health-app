@@ -6,3 +6,14 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.Theme{
+  background-image: url('/src/theme/theme2.jpg');
+  position: fixed;
+  background-size: cover;
+  background-position: center;
+  background-repeat:no-repeat;
+  height:100vh;
+  width: 100vw;
+
+}

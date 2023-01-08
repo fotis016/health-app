@@ -8,7 +8,9 @@ import {
   ButtonLink,
   ExtendedNavbar,
   NavbarLinkExtended,
+  Logo
 } from "./NavbarStyles";
+
 const Navbar = () => {
   const location = useLocation();
   useEffect(() => {
@@ -19,8 +21,12 @@ const Navbar = () => {
   return (
     <NavbarContainer extend={extendNavbar}>
       <NavbarLinkContainer>
+      {!extendNavbar && <Logo />}
         <NavbarLink className="nav-link active" to="/home">
           Home
+        </NavbarLink>
+        <NavbarLink className="nav-link" to="/vaccinations">
+          Vaccination Statistics
         </NavbarLink>
         <NavbarLink className="nav-link" to="/about">
           About Us
@@ -40,6 +46,9 @@ const Navbar = () => {
         <ExtendedNavbar>
           <NavbarLinkExtended className="nav-link active" to="/home">
             Home
+          </NavbarLinkExtended>
+          <NavbarLinkExtended className="nav-link" to="/vaccinations">
+          Vaccination Statistics
           </NavbarLinkExtended>
           <NavbarLinkExtended className="nav-link" to="/about">
             About Us
