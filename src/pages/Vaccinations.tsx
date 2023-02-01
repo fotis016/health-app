@@ -1,11 +1,32 @@
-import React, {useState, useEffect} from "react";
+import 'react-datepicker/dist/react-datepicker.css';
+
+import React, {
+  useEffect,
+  useState,
+} from 'react';
+
+import Highcharts from 'highcharts';
+import HighchartsReact from 'highcharts-react-official';
 import $ from 'jquery';
-import { MainContainer, ParagraphContainer, Paragraph, SecondaryContainer, Button, ButtonContainer} from "./VaccinationsStyles";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import moment from 'moment';
+import DatePicker from 'react-datepicker';
+
+import {
+  Button,
+  ButtonContainer,
+  MainContainer,
+  Paragraph,
+  ParagraphContainer,
+  SecondaryContainer,
+} from './VaccinationsStyles';
+
 export const Vaccinations = () => {
+
+
+    const [xAxis, setXAxis] = useState<string[]>([])
+    const [yAxis, setYAxis] = useState<number[]>([])
     const vaccinationsPerDay: number[] = []
-    const [dates, setDates] = useState<string[]>([]);
+    const datesArray : string[] = []
     const [startDate,
         setStartDate] = useState < Date | null > (new Date())
     const [endDate,
@@ -14,7 +35,23 @@ export const Vaccinations = () => {
     date_to: endDate?.toISOString().split('T')[0]}
     var sortedData: any[]
 
+
+    const options = {
+      xAxis: {
+        categories: xAxis
+      },
+      title: {
+        text: 'Vaccinations chart'
+      },
+      series: [{
+        name: 'Total Vaccinations',
+        data: yAxis
+      }]
+    }
+
     const handleClick = () => {
+      setXAxis([])
+      setYAxis([])
      $.when($.ajax({
        url: 'https://data.gov.gr/api/v1/query/mdg_emvolio_weekly',
        data: data,
@@ -23,15 +60,14 @@ export const Vaccinations = () => {
          "Authorization": "Token 7ed90049128c5ce939b1077baac37612e5e1dd63"
        },
        success: function(data) {
-        setDates([])
         sortedData = data.sort((a: any, b: any) => {
          return new Date(a.weekreferencedate).getTime() - new Date(b.weekreferencedate).getTime();
         })
         let i=0
         let flag = false
         sortedData.map((item: any) => {
-        if(item.areaid === 701){
-          setDates(dates => [...dates, item.weekreferencedate])
+        if(item.weekreferencedate !== datesArray[datesArray.length-1]){
+          datesArray.push(item.weekreferencedate)
           if(flag === false){
             flag = true
             vaccinationsPerDay.push(item.totalvaccinations)
@@ -44,13 +80,20 @@ export const Vaccinations = () => {
         else{
           vaccinationsPerDay[i] = vaccinationsPerDay[i] + item.totalvaccinations
         }})
-        for(i=0; i<vaccinationsPerDay.length;i++){
-          console.log(dates[i])
-          console.log(vaccinationsPerDay[i])
-        }
+        datesArray.map((date)=> {
+          setXAxis((old) => [...old, moment(date).utc().format('DD-MM-YYYY')
+        ])
+        })
+        vaccinationsPerDay.map((value)=> {
+          setYAxis((old)=> [...old, value])
+        })
        }
      }));
    };
+
+   useEffect(() => {
+    console.log(xAxis)
+   }, [xAxis])
 
     return (
        <>
@@ -86,6 +129,12 @@ export const Vaccinations = () => {
           <Button onClick={handleClick} style={{paddingTop: 5}}>Ok</Button>
          </ButtonContainer>
         </MainContainer>
+
+        <HighchartsReact
+          style={{width: 100}}
+          highcharts={Highcharts}
+          options={options}
+        />
        </>
     )
 
