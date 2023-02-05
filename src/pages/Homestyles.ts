@@ -4,7 +4,7 @@ import colors from "../theme"
 export const Header = styled.h1`
 padding-left: 43%;
 font-family: OpenSans-Regular, sans-serif;
-color: ${colors.neutral.w};
+color: ${colors.primary[20]};
 @media (max-width: 500px) {
   padding-left: 7%;
 }

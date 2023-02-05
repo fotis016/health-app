@@ -18,6 +18,7 @@ import {
   Paragraph,
   ParagraphContainer,
   SecondaryContainer,
+  GraphContainer
 } from './VaccinationsStyles';
 
 export const Vaccinations = () => {
@@ -91,10 +92,6 @@ export const Vaccinations = () => {
      }));
    };
 
-   useEffect(() => {
-    console.log(xAxis)
-   }, [xAxis])
-
     return (
        <>
         <ParagraphContainer>
@@ -129,12 +126,12 @@ export const Vaccinations = () => {
           <Button onClick={handleClick} style={{paddingTop: 5}}>Ok</Button>
          </ButtonContainer>
         </MainContainer>
-
+        <GraphContainer>
         <HighchartsReact
-          style={{width: 100}}
           highcharts={Highcharts}
           options={options}
         />
+        </GraphContainer>
        </>
     )
 

@@ -43,6 +43,7 @@ export const ParagraphContainer = styled.div`
  }
 `
 export const Paragraph = styled.p`
+  color: ${colors.primary[20]};
   font-family: OpenSans-Regular, sans-serif;
 `
 
@@ -74,3 +75,12 @@ export const Button = styled.button`
   }
 
 `;
+
+export const GraphContainer = styled.div`
+  align-items: center;
+  @media (min-width: 2560px){
+    width: 80%;
+    height: 100%;
+    padding-left: 280px;}
+  padding-top: 50px;
+`

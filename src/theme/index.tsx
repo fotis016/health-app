@@ -1,6 +1,7 @@
 const colors = {
  primary: {
-  10: '#7a0455'
+  10: '#7a0455',
+  20: '#0001A4'
  },
 
  secondary: {
@@ -9,7 +10,8 @@ const colors = {
 
  neutral: {
   50: '#738C88',
-  w: '#FFFFFF'
+  w: '#FFFFFF',
+  30: '#006CCB'
  }
 }
 
