@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Select, { SingleValue } from 'react-select';
 import { Scrollbar } from 'react-scrollbars-custom';
-import {A, Button, ButtonContainer, CarouselContainer, Container, Paragraph, H1, ItemContainer, ItemText, ItemTitle, TableContainer } from './PharmDutiesStyles';
+import {A, Button, ButtonContainer, Container, Paragraph, H1, ItemText, ItemTitle, TableContainer } from './PharmDutiesStyles';
 
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
@@ -52,7 +52,6 @@ export const PharmDutiesPage = () => {
       })
       setDutiesData(response.data)
       setClientHasEnteredData(true)
-      console.log(dutiesData)
     } catch (error) {
       console.error(error);
     }
