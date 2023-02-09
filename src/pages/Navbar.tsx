@@ -1,14 +1,19 @@
-import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import {
-  NavbarContainer,
-  NavbarLinkContainer,
-  NavbarLink,
+  useEffect,
+  useState,
+} from 'react';
+
+import { useLocation } from 'react-router-dom';
+
+import {
   ButtonLink,
   ExtendedNavbar,
+  Logo,
+  NavbarContainer,
+  NavbarLink,
+  NavbarLinkContainer,
   NavbarLinkExtended,
-  Logo
-} from "./NavbarStyles";
+} from './NavbarStyles';
 
 const Navbar = () => {
   const location = useLocation();
@@ -33,6 +38,12 @@ const Navbar = () => {
         <NavbarLink className="nav-link" to="/contact">
           Contact Us
         </NavbarLink>
+        <NavbarLink style={{paddingLeft: 1000}} className="nav-link" to="/login">
+          Login
+        </NavbarLink>
+        <NavbarLink  className="nav-link" to="/register">
+          Register
+        </NavbarLink>
         <ButtonLink
           onClick={() => {
             setExtendNavbar(!extendNavbar);
@@ -54,6 +65,12 @@ const Navbar = () => {
           </NavbarLinkExtended>
           <NavbarLinkExtended className="nav-link" to="/contact">
             Contact Us
+          </NavbarLinkExtended>
+          <NavbarLinkExtended className="nav-link" to="login">
+            Login
+          </NavbarLinkExtended>
+          <NavbarLinkExtended className="nav-link" to="register">
+            Register
           </NavbarLinkExtended>
         </ExtendedNavbar>
       )}
