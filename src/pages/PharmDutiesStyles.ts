@@ -6,13 +6,6 @@ display: flex;
 align-items: center;
 flex-direction: column;
 `
-export const CarouselContainer = styled.div`
- padding-top: 40px;
-`
-
-export const ItemContainer = styled.div`
- background-color: "rgba(255,255,255, 0.5)";
-`
 
 export const Paragraph = styled.p`
  color: ${colors.primary[20]};

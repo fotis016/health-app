@@ -13,9 +13,11 @@ import {
   collection,
   getDocs,
   getFirestore,
+  orderBy,
   query,
   where,
 } from 'firebase/firestore';
+import { getDatabase } from 'firebase/database';
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -32,9 +34,9 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-// const analytics = getAnalytics(app);
 const auth = getAuth(app);
 const db = getFirestore(app);
+const database = getDatabase(app)
 
 const googleProvider = new GoogleAuthProvider();
 const signInWithGoogle = async () => {
@@ -55,6 +57,10 @@ const signInWithGoogle = async () => {
     console.error(error);
   }
 };
+
+const isUserLoggedIn = () => {
+  return auth.currentUser
+}
 
 const logInWithEmailAndPassword = async (email: string, password: string) => {
   try {
@@ -92,12 +98,37 @@ const logout = () => {
   signOut(auth);
 };
 
+const addAppointment = async (date: string | undefined, speciality: string | undefined) => {
+  const appointmentsRef = collection(db, "appointments");
+  const q = query(appointmentsRef, where("speciality", "==", speciality), where("date", "==", date))
+  const docs = await getDocs(q);
+  docs.forEach((doc: any) => {
+    console.log(doc.id, doc.data())
+  })
+  if (docs.docs.length === 0) {
+    try{
+      await addDoc(collection(db, "appointments"), {
+        email: auth.currentUser?.email,
+        date,
+        speciality
+      });}
+      catch (err) {
+        console.error(err);
+      }
+    return false
+  }
+    return true
+};
+
 export {
+  addAppointment,
   auth,
   db,
+  database,
   logInWithEmailAndPassword,
   logout,
   registerWithEmailAndPassword,
   sendPasswordReset,
   signInWithGoogle,
+  isUserLoggedIn
 };

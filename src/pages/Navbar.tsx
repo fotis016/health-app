@@ -2,9 +2,8 @@ import {
   useEffect,
   useState,
 } from 'react';
-
+import { isUserLoggedIn, logout } from '../firebase';
 import { useLocation } from 'react-router-dom';
-
 import {
   ButtonLink,
   ExtendedNavbar,
@@ -35,15 +34,19 @@ const Navbar = () => {
         <NavbarLink className="nav-link" to="/pharmduties">
           Pharmacy Duties
         </NavbarLink>
+        <NavbarLink className="nav-link" to="/appointments">
+          Appointments
+        </NavbarLink>
         <NavbarLink className="nav-link" to="/contact">
           Contact Us
         </NavbarLink>
-        <NavbarLink style={{paddingLeft: 1000}} className="nav-link" to="/login">
+        {!isUserLoggedIn() && <NavbarLink style={{paddingLeft: '68em'}} className="nav-link" to="/login">
           Login
-        </NavbarLink>
-        <NavbarLink  className="nav-link" to="/register">
+        </NavbarLink>}
+        {!isUserLoggedIn() && <NavbarLink  className="nav-link" to="/register">
           Register
-        </NavbarLink>
+        </NavbarLink>}
+        {isUserLoggedIn() && <NavbarLink className="nav-link" style={{paddingLeft: '65em'}} onClick={logout} to="/login">Logout</NavbarLink>}
         <ButtonLink
           onClick={() => {
             setExtendNavbar(!extendNavbar);
@@ -62,6 +65,9 @@ const Navbar = () => {
           </NavbarLinkExtended>
           <NavbarLinkExtended className="nav-link" to="/pharmduties">
           Pharmacy Duties
+          </NavbarLinkExtended>
+          <NavbarLinkExtended className="nav-link" to="/appointments">
+          Appointments
           </NavbarLinkExtended>
           <NavbarLinkExtended className="nav-link" to="/contact">
             Contact Us
