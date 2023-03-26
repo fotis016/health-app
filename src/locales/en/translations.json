@@ -1,0 +1,22 @@
+{
+  "headerHome": "Home",
+  "headerVaccinations": "Vaccination Statistics",
+  "headerDuties": "Pharmacy Duties",
+  "headerContact": "Contact Us",
+  "homeTitle": "Welcome to Health App",
+  "statisticsHeader": "With this service, you are able to view detailed statistics regarding the vaccination of the population of Greece.",
+  "statisticsStartDate": "Please select start date:",
+  "statisticsEndDate": "Please select end date:",
+  "statisticsTableTitle": "Vaccinations Chart",
+  "statisticsTableLegend": "Total Vaccinations",
+  "dutiesTitle": "Pharmacy Duties",
+  "dutiesDetails": "Please select the desired area to view the pharmacies on duty of the day",
+  "dutiesArea1": "Herakleion",
+  "dutiesArea2": "Pireaus",
+  "dutiesTableColumn1": "Region",
+  "dutiesTableColumn2": "Pharmacy",
+  "dutiesTableColumn3": "Address",
+  "dutiesTableColumn4": "Phone",
+  "dutiesTableColumn5": "Working Hours",
+  "dutiesPlaceholder": "Select"
+}

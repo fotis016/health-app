@@ -1,17 +1,41 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import Select, { SingleValue } from 'react-select';
-import { Scrollbar } from 'react-scrollbars-custom';
-import {A, Button, ButtonContainer, Container, Paragraph, H1, ItemText, ItemTitle, TableContainer } from './PharmDutiesStyles';
-
-import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 
+import {
+  useEffect,
+  useState,
+} from 'react';
+
+import axios from 'axios';
+import { useTranslation } from 'react-i18next';
+import { Scrollbar } from 'react-scrollbars-custom';
+import Select, { SingleValue } from 'react-select';
+import {
+  Table,
+  Tbody,
+  Td,
+  Th,
+  Thead,
+  Tr,
+} from 'react-super-responsive-table';
+
+import {
+  A,
+  Button,
+  ButtonContainer,
+  Container,
+  H1,
+  ItemText,
+  ItemTitle,
+  Paragraph,
+  TableContainer,
+} from './PharmDutiesStyles';
+
 export const PharmDutiesPage = () => {
+  const {t} = useTranslation(['translation']);
 
   const areas = [
-    {label: "Herakleion", value: "herakleion"},
-    {label: "Pireaus", value: "piraeus"}
+    {label: t('dutiesArea1'), value: "herakleion"},
+    {label: t('dutiesArea2') ,value: "piraeus"}
   ]
   const [selectedArea, setSelectedArea] = useState<SingleValue<{ label: string; value: string; }>>()
   const [token, setToken] = useState('')
@@ -24,7 +48,7 @@ export const PharmDutiesPage = () => {
   const getToken =  () => {
     const data = {
       "email": "tottinos86@gmail.com",
-      "password": "Fotis99!7"
+      "password": "testP@ssword1"
   };
 
     fetch("https://cors-server-project.fly.dev/https://api.efhmeries.gr/api/token", {
@@ -62,11 +86,11 @@ export const PharmDutiesPage = () => {
  return (
     <div className="container text-center">
       <Container>
-        <H1>Pharmacy Duties</H1>
+        <H1>{t('dutiesTitle')}</H1>
         <Paragraph>
-          Please select the desired area to view the pharmacies on duty at the current time.
+        {t('dutiesDetails')}
         </Paragraph>
-        <Select options={areas} onChange={option => handleChange(option)}/>
+        <Select placeholder={t('dutiesPlaceholder')} options={areas} onChange={option => handleChange(option)}/>
         <ButtonContainer>
           <Button onClick={getDuties}>Ok</Button>
         </ButtonContainer>
@@ -76,11 +100,11 @@ export const PharmDutiesPage = () => {
   <Table>
       <Thead>
         <Tr>
-          <Th><ItemTitle>Region</ItemTitle></Th>
-          <Th><ItemTitle>Pharmacy</ItemTitle></Th>
-          <Th><ItemTitle>Address</ItemTitle></Th>
-          <Th><ItemTitle>Phone</ItemTitle></Th>
-          <Th><ItemTitle>Working Hours</ItemTitle></Th>
+          <Th><ItemTitle>{t('dutiesTableColumn1')}</ItemTitle></Th>
+          <Th><ItemTitle>{t('dutiesTableColumn2')}</ItemTitle></Th>
+          <Th><ItemTitle>{t('dutiesTableColumn3')}</ItemTitle></Th>
+          <Th><ItemTitle>{t('dutiesTableColumn4')}</ItemTitle></Th>
+          <Th><ItemTitle>{t('dutiesTableColumn5')}</ItemTitle></Th>
         </Tr>
       </Thead>
       <Tbody>

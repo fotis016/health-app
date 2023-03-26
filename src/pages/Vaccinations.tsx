@@ -1,27 +1,26 @@
 import 'react-datepicker/dist/react-datepicker.css';
 
-import {
-  useState,
-} from 'react';
+import { useState } from 'react';
 
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import $ from 'jquery';
 import moment from 'moment';
 import DatePicker from 'react-datepicker';
+import { useTranslation } from 'react-i18next';
 
 import {
   Button,
   ButtonContainer,
+  GraphContainer,
   MainContainer,
   Paragraph,
   ParagraphContainer,
   SecondaryContainer,
-  GraphContainer
 } from './VaccinationsStyles';
 
 export const Vaccinations = () => {
-
+    const {t} = useTranslation(['translation']);
 
     const [xAxis, setXAxis] = useState<string[]>([])
     const [yAxis, setYAxis] = useState<number[]>([])
@@ -41,10 +40,10 @@ export const Vaccinations = () => {
         categories: xAxis
       },
       title: {
-        text: 'Vaccinations chart'
+        text: t('statisticsTableTitle')
       },
       series: [{
-        name: 'Total Vaccinations',
+        name: t('statisticsTableLegend'),
         data: yAxis
       }]
     }
@@ -94,13 +93,12 @@ export const Vaccinations = () => {
     return (
        <>
         <ParagraphContainer>
-         <Paragraph>With this service, you are able to view detailed statistics regarding the vaccination of
-          the population of Greece.
+         <Paragraph>{t('statisticsHeader')}
          </Paragraph></ParagraphContainer>
 
         <MainContainer style={{paddingTop: 40}}>
          <SecondaryContainer>
-            <Paragraph style={{paddingRight: 10}}>Please select start date:</Paragraph>
+            <Paragraph style={{paddingRight: 10}}>{t('statisticsStartDate')}</Paragraph>
             <DatePicker
                 dateFormat={"yyyy-MM-dd"}
                 maxDate={endDate}
@@ -111,7 +109,7 @@ export const Vaccinations = () => {
                 onChange={(date) => setStartDate(date)}/>
          </SecondaryContainer>
          <SecondaryContainer style={{paddingTop: 10, paddingBottom: 30}}>
-            <Paragraph style={{paddingRight: 10}}>Please select end date:</Paragraph>
+            <Paragraph style={{paddingRight: 10}}>{t('statisticsEndDate')}</Paragraph>
             <DatePicker
                 dateFormat={"yyyy-MM-dd"}
                 minDate={startDate}

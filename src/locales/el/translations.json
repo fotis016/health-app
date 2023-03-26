@@ -1,0 +1,22 @@
+{
+  "headerHome": "Αρχική",
+  "headerVaccinations": "Στατιστικά Εμβολιασμών",
+  "headerDuties": "Εφημερεύοντα Φαρμακεία",
+  "headerContact": "Επικοινωνία",
+  "homeTitle": "Καλώς ορίσατε στο Health App",
+  "statisticsHeader": "Με αυτήν την υπηρεσία, έχετε την δυνατότητα να προβάλετε αναλυτικά τα στατιστικά εμβολιασμών του πληθυσμού της Ελλάδας.",
+  "statisticsStartDate": "Παρακαλώ επιλέξτε αρχική ημερομηνία:",
+  "statisticsEndDate": "Παρακαλώ επιλέξτε τελική ημερομηνία:",
+  "statisticsTableTitle": "Γράφημα εμβολιασμών",
+  "statisticsTableLegend": "Συνολικοί εμβολιασμοί",
+  "dutiesTitle": "Εφημερεύοντα Φαρμακεία",
+  "dutiesDetails": "Παρακαλώ επιλέξτε την επιθυμητή περιοχή για να δείτε τα εφημερεύοντα Φαρμακεία της ημέρας.",
+  "dutiesArea1": "Ηράκλειο",
+  "dutiesArea2": "Πειραιάς",
+  "dutiesTableColumn1": "Περιοχή",
+  "dutiesTableColumn2": "Φαρμακείο",
+  "dutiesTableColumn3": "Διεύθυνση",
+  "dutiesTableColumn4": "Τηλέφωνο",
+  "dutiesTableColumn5": "Ώρες Λειτουργίας",
+  "dutiesPlaceholder": "Επιλογή"
+}
