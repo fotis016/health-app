@@ -2,8 +2,8 @@ import styled from "styled-components"
 import colors from "../theme"
 
 export const Header = styled.h1`
+font-family: 'Open Sans', sans-serif;
 padding-left: 43%;
-font-family: OpenSans-Regular, sans-serif;
 color: ${colors.primary[20]};
 @media (max-width: 500px) {
   padding-left: 7%;

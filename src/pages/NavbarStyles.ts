@@ -2,6 +2,8 @@ import { Link } from "react-router-dom"
 import styled from "styled-components"
 import colors from '../theme/'
 import {ReactComponent as Icon} from '../theme/icons/logo.svg'
+import { ReactComponent as FlagUK } from '../theme/icons/gb.svg';
+import { ReactComponent as FlagGR } from '../theme/icons/gr.svg';
 
 type NavbarProps = {
   extend: boolean;
@@ -22,7 +24,7 @@ export const NavbarLinkContainer = styled("div")`
 export const NavbarLink = styled(Link)`
   color: ${colors.neutral.w};
   font-size: x-large;
-  font-family: OpenSans-Regular, sans-serif;
+  font-family: Open Sans, sans-serif;
   text-decoration: none;
   margin: 10px;
   &:hover,
@@ -39,7 +41,7 @@ export const NavbarLink = styled(Link)`
 export const NavbarLinkExtended = styled(Link)`
   color: ${colors.neutral.w};
   font-size: x-large;
-  font-family: OpenSans-Regular, sans-serif;
+  font-family: Open Sans, sans-serif;
   text-decoration: none;
   margin: 10px;
   &:hover,
@@ -75,4 +77,22 @@ export const Logo = styled(Icon)`
   height: 50px;
   width: 50px;
   padding-top: 4px;
+  @media (max-width: 700px) {
+    display: none;
+  }
+`
+export const GreeceFlag = styled(FlagGR)`
+  height: 20px;
+  width: 35px;
+  @media (max-width: 700px) {
+    display: none;
+  }
+`
+
+export const UkFlag = styled(FlagUK)`
+  height: 20px;
+  width: 35px;
+  @media (max-width: 700px) {
+    display: none;
+  }
 `

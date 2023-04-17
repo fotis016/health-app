@@ -37,14 +37,14 @@ export const ParagraphContainer = styled.div`
  display: flex;
  flex-direction: column;
  padding-left: 37%;
-
  @media (max-width: 500px){
   padding-left: 10%;
  }
 `
 export const Paragraph = styled.p`
+  @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital@1&display=swap');
   color: ${colors.primary[20]};
-  font-family: OpenSans-Regular, sans-serif;
+  font-family: 'Open Sans', sans-serif;
 `
 
 export const DatePickerWrapperStyles = createGlobalStyle`
@@ -82,5 +82,10 @@ export const GraphContainer = styled.div`
     width: 80%;
     height: 100%;
     padding-left: 280px;}
+  padding-top: 50px;
+  @media (max-width: 1920px){
+    width: 70%;
+    height: 100%;
+    padding-left: 400px;}
   padding-top: 50px;
 `

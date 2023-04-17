@@ -9,22 +9,22 @@ flex-direction: column;
 
 export const Paragraph = styled.p`
  color: ${colors.primary[20]};
- font-family: OpenSans-Regular, sans-serif;
+ font-family: Open Sans, sans-serif;
 `
 
 export const ItemTitle = styled.p`
  color: ${colors.secondary[20]};
- font-family: OpenSans-Regular, sans-serif;
+ font-family: Open Sans, sans-serif;
 `
 
 export const ItemText = styled.p`
- color: ${colors.neutral[30]};
- font-family: OpenSans-Regular, sans-serif;
+ color: ${colors.neutral.b};
+ font-family: Open Sans, sans-serif;
 `
 
 export const H1 = styled.h1`
  color: ${colors.primary[20]};
- font-family: OpenSans-Bold, sans-serif;
+ font-family: Open Sans, sans-serif;
 `
 export const Button = styled.button`
   width: 60px;
@@ -32,7 +32,7 @@ export const Button = styled.button`
   border-radius: 1em;
   border-color: #95fdff;
   box-sizing: border-box;
-  font-family: OpenSans-Regular, sans-serif;
+  font-family: Open Sans, sans-serif;
   color: ${colors.neutral.w};
   background-color: #4eb5f1;
   text-align: center;
@@ -45,7 +45,7 @@ export const Button = styled.button`
 export const TableContainer = styled.div`
  height: 600px;
  overflow-y: hidden;
- background-color: rgba(0, 0, 0, 0.68);
+ background-color:${colors.primary[10]};
 `
 
 export const ButtonContainer = styled.div`
@@ -54,9 +54,9 @@ export const ButtonContainer = styled.div`
 
 export const A = styled.a`
   text-decoration: none;
-  color: ${colors.neutral[30]};
+  color: ${colors.neutral.b};
 
   &:visited {
-    color: ${colors.neutral[30]};
+    color: ${colors.neutral.b};
   }
 `;

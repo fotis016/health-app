@@ -7,10 +7,10 @@ import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 
 import { IconButton } from '@mui/material';
+import { ReactComponent as FlagUK } from '../theme/icons/gb.svg';
+import { ReactComponent as FlagGR } from '../theme/icons/gr.svg';
 
 import i18n from '../i18n/i18n';
-import { ReactComponent as UkFlag } from '../theme/icons/gb.svg';
-import { ReactComponent as GreeceFlag } from '../theme/icons/gr.svg';
 import {
   ButtonLink,
   ExtendedNavbar,
@@ -19,6 +19,8 @@ import {
   NavbarLink,
   NavbarLinkContainer,
   NavbarLinkExtended,
+  GreeceFlag,
+  UkFlag
 } from './NavbarStyles';
 
 const Navbar = () => {
@@ -79,12 +81,12 @@ const Navbar = () => {
           </NavbarLinkExtended>
           {(i18n.language===(
           'en' ) && (<IconButton onClick={() => i18n.changeLanguage('el')}>
-          <GreeceFlag height={20} width={35} />
+          <FlagGR height={20} width={35} />
         </IconButton>)
         )}
         {(i18n.language===(
           'el' ) && (<IconButton onClick={() => i18n.changeLanguage('en')}>
-          <UkFlag height={20} width={35} />
+          <FlagUK height={20} width={35} />
         </IconButton>)
         )}
         </ExtendedNavbar>

@@ -6,12 +6,27 @@ import ReactDOM from 'react-dom/client';
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { createGlobalStyle } from 'styled-components';
+import OpenSans from './theme/fonts/OpenSans-Regular.ttf';
 
+const GlobalStyle = createGlobalStyle`
+  @font-face {
+    font-family: 'Open Sans';
+    src: url(${OpenSans}) format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: auto;
+  }
+  h1 {
+    font-family: 'Open Sans';
+  }
+`;
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.Fragment>
+    <GlobalStyle />
     <App />
   </React.Fragment>
 );
