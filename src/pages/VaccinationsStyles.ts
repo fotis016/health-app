@@ -82,10 +82,17 @@ export const GraphContainer = styled.div`
     width: 80%;
     height: 100%;
     padding-left: 280px;}
-  padding-top: 50px;
   @media (max-width: 1920px){
     width: 70%;
     height: 100%;
     padding-left: 400px;}
+  @media (max-width: 800px){
+    padding-left: 130px;
+    padding-top: 20px;
+  }
   padding-top: 50px;
+  @media (max-width: 500px){
+    padding-left: 70px;
+    padding-top: 10px;
+  }
 `

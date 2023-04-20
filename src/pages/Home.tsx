@@ -20,6 +20,7 @@ import {
   ImageContainer,
   ImageWrapper,
   MainContainer,
+  Paragraph,
 } from './Homestyles';
 
 export const HomePage = () => {
@@ -45,7 +46,22 @@ const {t} = useTranslation(['translation']);
     return (
       <MainContainer>
         <Header> {t('homeTitle')} </Header>
-        <Carousel showStatus={false} showArrows={false} showIndicators={true} autoPlay infiniteLoop showThumbs={false}>
+        <div style={{backgroundColor: 'white', width: 800, height: 120, flexDirection: 'row', alignItems: 'center', display: 'flex'}}>
+          <div style={{flexDirection: 'column', width: 100, height: 120, padding: 10, marginTop: 10}}>
+            <img style={{ float: 'left'}} width={100} height={75} src='https://media.cnn.com/api/v1/images/stellar/prod/230420101423-01-worms-munchies-study.jpg?c=16x9&q=w_800,c_fill' alt='news'/>
+            <div style={{height: 20, width: 90}}>
+              <Paragraph style={{textAlign: 'center'}}>New York Post</Paragraph>
+            </div>
+          </div>
+          <div style={{height: 160, width: 500, flexDirection: 'column', marginLeft: 50}}>
+            <Paragraph style={{fontSize: 20, textAlign: 'start'}}>Worms get the munchies, too, study reveals - CNN</Paragraph>
+            <Paragraph style={{fontSize: 14, textAlign: 'start'}}>Researchers found worms, like humans, engage in hedonic feeding — a phenomenon more commonly known as the munchies.</Paragraph>
+          </div>
+          <div style={{height: 120, width: 100, flexDirection: 'column', marginLeft: 30}}>
+            <Paragraph style={{fontSize: 14, textAlign: 'center', marginTop: 100}}>2023-04-20</Paragraph>
+          </div>
+        </div>
+        {/* <Carousel showStatus={false} showArrows={false} showIndicators={true} autoPlay infiniteLoop showThumbs={false}>
           <ImageWrapper >
             <ImageContainer style={{ height: screenSize.dynamicHeight < 800? "35%" : "100%", width: screenSize.dynamicHeight < 800? "100%" : "auto"}} src="https://i.imgur.com/6HR9Hjt.jpg" alt='image1' />
           </ImageWrapper>
@@ -58,7 +74,7 @@ const {t} = useTranslation(['translation']);
           <ImageWrapper>
             <ImageContainer style={{ height: screenSize.dynamicHeight < 800? "35%" : "100%", width: screenSize.dynamicHeight < 800? "100%" : "auto"}} src="https://i.imgur.com/NttHNjM.jpeg" alt='image4'/>
           </ImageWrapper>
-        </Carousel>
+        </Carousel> */}
       </MainContainer>
     )
 }
