@@ -9,21 +9,24 @@ flex-direction: column;
 
 export const Paragraph = styled.p`
  color: ${colors.primary[20]};
+ font-weight: bold;
+ font-size:
  font-family: Open Sans, sans-serif;
 `
 
 export const ItemTitle = styled.p`
- color: ${colors.secondary[20]};
+ font-weight: bold;
+ color: ${colors.neutral.w};
  font-family: Open Sans, sans-serif;
 `
 
 export const ItemText = styled.p`
- color: ${colors.neutral.b};
+ color: ${colors.neutral.w};
  font-family: Open Sans, sans-serif;
 `
 
 export const H1 = styled.h1`
- color: ${colors.primary[20]};
+ color: ${colors.neutral.w};
  font-family: Open Sans, sans-serif;
 `
 export const Button = styled.button`
@@ -53,10 +56,10 @@ export const ButtonContainer = styled.div`
 `
 
 export const A = styled.a`
-  text-decoration: none;
-  color: ${colors.neutral.b};
+  text-decoration: underline;
+  color: ${colors.neutral.w};
 
   &:visited {
-    color: ${colors.neutral.b};
+    color: ${colors.neutral.w};
   }
 `;

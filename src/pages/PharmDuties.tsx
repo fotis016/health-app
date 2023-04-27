@@ -5,6 +5,7 @@ import {
   useState,
 } from 'react';
 
+import { css } from '@emotion/css'
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
 import { Scrollbar } from 'react-scrollbars-custom';
@@ -29,6 +30,29 @@ import {
   Paragraph,
   TableContainer,
 } from './PharmDutiesStyles';
+
+const pharmDutiesContainer = css`
+  margin: 50px 90px;
+  @media (max-width: 1000px) {
+    margin: 10px;
+  }
+`
+const tableContainer = css`
+  border-radius: 10px;
+  @media (max-width: 1000px) {
+    margin: 10px;
+  }
+`
+const tableStyle = css`
+  padding: 20px 10px 20px 20px;
+  color: white !important;
+  @media (max-width: 1000px) {
+    margin: 10px;
+  }
+`
+const thStyle = css`
+  text-align: left;
+`
 
 export const PharmDutiesPage = () => {
   const {t} = useTranslation(['translation']);
@@ -84,7 +108,7 @@ export const PharmDutiesPage = () => {
   useEffect(() => {getToken()
   }, [])
  return (
-    <div className="container text-center">
+    <div className={pharmDutiesContainer}>
       <Container>
         <H1>{t('dutiesTitle')}</H1>
         <Paragraph>
@@ -95,16 +119,16 @@ export const PharmDutiesPage = () => {
           <Button onClick={getDuties}>Ok</Button>
         </ButtonContainer>
      </Container>
-{clientHasEnteredData && <TableContainer>
+{clientHasEnteredData && <TableContainer className={tableContainer}>
   <Scrollbar>
-  <Table>
+  <Table className={tableStyle}>
       <Thead>
         <Tr>
-          <Th><ItemTitle>{t('dutiesTableColumn1')}</ItemTitle></Th>
-          <Th><ItemTitle>{t('dutiesTableColumn2')}</ItemTitle></Th>
-          <Th><ItemTitle>{t('dutiesTableColumn3')}</ItemTitle></Th>
-          <Th><ItemTitle>{t('dutiesTableColumn4')}</ItemTitle></Th>
-          <Th><ItemTitle>{t('dutiesTableColumn5')}</ItemTitle></Th>
+          <Th className={thStyle}><ItemTitle>{t('dutiesTableColumn1')}</ItemTitle></Th>
+          <Th className={thStyle}><ItemTitle>{t('dutiesTableColumn2')}</ItemTitle></Th>
+          <Th className={thStyle}><ItemTitle>{t('dutiesTableColumn3')}</ItemTitle></Th>
+          <Th className={thStyle}><ItemTitle>{t('dutiesTableColumn4')}</ItemTitle></Th>
+          <Th className={thStyle}><ItemTitle>{t('dutiesTableColumn5')}</ItemTitle></Th>
         </Tr>
       </Thead>
       <Tbody>
