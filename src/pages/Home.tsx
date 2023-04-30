@@ -11,18 +11,85 @@ import { useEffect, useState } from "react";
 
 import { useTranslation } from "react-i18next";
 import { Carousel } from "react-responsive-carousel";
-
+import { css } from "@emotion/css";
+import { Img } from "react-image";
+import moment from "moment";
 import {
+  A,
   Header,
   ImageContainer,
   ImageWrapper,
   MainContainer,
+  MainNewsContainer,
   Paragraph,
 } from "./Homestyles";
+import { Scrollbar } from "react-scrollbars-custom";
+import colors from "../theme";
+import axios from "axios";
+import i18n from "../i18n/i18n";
 
+interface NewsData {
+  title: string;
+  description: string;
+  urlToImage: string;
+  source: {
+    name: string;
+  };
+  publishedAt: string;
+  url: string;
+}
+
+const newsItem = css`
+  border-radius: 6px;
+  padding: 10px;
+  background-color: ${colors.primary[30]};
+  width: 800px;
+  height: 120px;
+  flex-direction: row;
+  align-items: center;
+  display: flex;
+  @media (max-width: 700px) {
+    height: 120px;
+    width: 500px;
+  }
+`;
+const newsMainContainer = css`
+  height: 120px;
+  width: 500px;
+  flex-direction: column;
+  margin-left: 50px;
+  @media (max-width: 700px) {
+    height: 120px;
+    width: 400px;
+  }
+`;
+const newsImageContainer = css`
+  flex-direction: column;
+  width: 100px;
+  height: 120px;
+  padding: 15px;
+  margin-top: 10px;
+  display: flex;
+  @media (max-width: 700px) {
+    display: none;
+  }
+`;
+
+const newsTimePostedContainer = css`
+  flex-direction: column;
+  width: 100px;
+  height: 120px;
+  flex-direction: column;
+  margin-left: 30px;
+  @media (max-width: 500px) {
+    display: none;
+  }
+`;
+const placeHolderImage =
+  "https://umaine.edu/news/wp-content/uploads/sites/3/2019/09/One-Health-news-feature.jpg";
 export const HomePage = () => {
   const { t } = useTranslation(["translation"]);
-
+  const [newsData, setNewsData] = useState([]);
   const [screenSize, getDimension] = useState({
     dynamicHeight: window.innerHeight,
   });
@@ -31,7 +98,13 @@ export const HomePage = () => {
       dynamicHeight: window.innerHeight,
     });
   };
-
+  function truncateString(str: string) {
+    if (str.length > 140) {
+      return str.slice(0, 140) + "...";
+    } else {
+      return str;
+    }
+  }
   useEffect(() => {
     window.addEventListener("resize", setDimension);
 
@@ -40,86 +113,79 @@ export const HomePage = () => {
     };
   }, [screenSize]);
 
+  const getNews = async () => {
+    const response = await axios.get(
+      `https://newsapi.org/v2/top-headlines?country=${t(
+        "newsApiCountry"
+      )}&category=health&apiKey=de514915ff0a4f4da501d73a77583b99`
+    );
+    setNewsData(response.data.articles);
+  };
+
+  useEffect(() => {
+    getNews();
+  }, [i18n.language]);
   return (
     <MainContainer>
       <Header> {t("homeTitle")} </Header>
-      <div
-        style={{
-          borderRadius: 6,
-          padding: 10,
-          backgroundColor: "#ffffff6b",
-          width: 800,
-          height: 120,
-          flexDirection: "row",
-          alignItems: "center",
-          display: "flex",
-        }}
-      >
-        <div
-          style={{
-            flexDirection: "column",
-            width: 100,
-            height: 120,
-            padding: 10,
-            marginTop: 10,
-          }}
-        >
-          <img
-            style={{ float: "left" }}
-            width={100}
-            height={75}
-            src="https://media.cnn.com/api/v1/images/stellar/prod/230420101423-01-worms-munchies-study.jpg?c=16x9&q=w_800,c_fill"
-            alt="news"
-          />
-          <div style={{ height: 20, width: 90 }}>
-            <Paragraph style={{ textAlign: "center" }}>New York Post</Paragraph>
-          </div>
-        </div>
-        <div
-          style={{
-            height: 160,
-            width: 500,
-            flexDirection: "column",
-            marginLeft: 50,
-          }}
-        >
-          <Paragraph style={{ fontSize: 20, textAlign: "start" }}>
-            Worms get the munchies, too, study reveals - CNN
-          </Paragraph>
-          <Paragraph style={{ fontSize: 14, textAlign: "start" }}>
-            Researchers found worms, like humans, engage in hedonic feeding — a
-            phenomenon more commonly known as the munchies.
-          </Paragraph>
-        </div>
-        <div
-          style={{
-            height: 120,
-            width: 100,
-            flexDirection: "column",
-            marginLeft: 30,
-          }}
-        >
-          <Paragraph
-            style={{ fontSize: 14, textAlign: "center", marginTop: 100 }}
-          >
-            2023-04-20
-          </Paragraph>
-        </div>
-      </div>
-      {/* <Carousel showStatus={false} showArrows={false} showIndicators={true} autoPlay infiniteLoop showThumbs={false}>
-          <ImageWrapper >
-            <ImageContainer style={{ height: screenSize.dynamicHeight < 800? "35%" : "100%", width: screenSize.dynamicHeight < 800? "100%" : "auto"}} src="https://i.imgur.com/6HR9Hjt.jpg" alt='image1' />
-          </ImageWrapper>
-          <ImageWrapper>
-            <ImageContainer style={{ height: screenSize.dynamicHeight < 800? "35%" : "100%", width: screenSize.dynamicHeight < 800? "100%" : "auto"}} src="https://i.imgur.com/pqViN5b.jpg" alt='image2'/>
-          </ImageWrapper>
-          <ImageWrapper>
-            <ImageContainer style={{ height: screenSize.dynamicHeight < 800? "40%" : "100%", width: screenSize.dynamicHeight < 800? "100%" : "auto"}} src="https://i.imgur.com/B7EQUTq.jpg" alt='image3'/>
-          </ImageWrapper>
-          <ImageWrapper>
-            <ImageContainer style={{ height: screenSize.dynamicHeight < 800? "35%" : "100%", width: screenSize.dynamicHeight < 800? "100%" : "auto"}} src="https://i.imgur.com/NttHNjM.jpeg" alt='image4'/>
-          </ImageWrapper>
-        </Carousel> */}
+      <Scrollbar>
+        <MainNewsContainer>
+          {newsData.map((newsData: NewsData) => (
+            <div className={newsItem}>
+              <div className={newsImageContainer}>
+                <Img
+                  style={{ float: "left" }}
+                  width={100}
+                  height={75}
+                  src={[newsData.urlToImage, placeHolderImage]}
+                  alt="news"
+                />
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "flex-start",
+                    height: 20,
+                    width: 90,
+                  }}
+                >
+                  <Paragraph
+                    style={{
+                      fontSize: 14,
+                      textAlign: "center",
+                    }}
+                  >
+                    {newsData.source.name}
+                  </Paragraph>
+                </div>
+              </div>
+              <div className={newsMainContainer}>
+                <A
+                  href={newsData.url}
+                  target="_blank"
+                  style={{
+                    fontSize: 20,
+                    textAlign: "start",
+                  }}
+                >
+                  {newsData.title}
+                </A>
+                {newsData.description && (
+                  <Paragraph style={{ fontSize: 14, textAlign: "start" }}>
+                    {truncateString(newsData.description)}
+                  </Paragraph>
+                )}
+              </div>
+              <div className={newsTimePostedContainer}>
+                <Paragraph
+                  style={{ fontSize: 14, textAlign: "center", marginTop: 100 }}
+                >
+                  {moment(newsData.publishedAt).utc().format("DD-MM-YYYY")}
+                </Paragraph>
+              </div>
+            </div>
+          ))}
+        </MainNewsContainer>
+      </Scrollbar>
     </MainContainer>
   );
 };

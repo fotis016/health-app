@@ -8,7 +8,7 @@ body {
 }
 
 .Theme{
-  background-image: url('/src/theme/theme2.jpg');
+  background-image: url('/src/theme/theme.jpg');
   position: fixed;
   background-size: cover;
   background-position: center;

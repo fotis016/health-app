@@ -18,5 +18,11 @@
   "dutiesTableColumn3": "Διεύθυνση",
   "dutiesTableColumn4": "Τηλέφωνο",
   "dutiesTableColumn5": "Ώρες Λειτουργίας",
-  "dutiesPlaceholder": "Επιλογή"
+  "dutiesPlaceholder": "Επιλογή",
+  "newsApiCountry": "gr",
+  "submitYourMessage": "Αποστείλετε το μήνυμά σας",
+  "contactDetails": "Στοιχεία επικοινωνίας",
+  "telephone": "Τηλέφωνο",
+  "name": "Όνομα",
+  "message": "Μήνυμα"
 }

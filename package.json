@@ -28,6 +28,7 @@
     "highcharts-react-official": "^3.1.0",
     "i18next": "^22.4.13",
     "jquery": "^3.6.3",
+    "js-cookie": "^3.0.5",
     "moment": "^2.29.4",
     "package.json": "^2.0.1",
     "react": "^18.2.0",
@@ -36,6 +37,7 @@
     "react-firebase-hooks": "^5.1.1",
     "react-i18next": "^12.2.0",
     "react-icons": "^4.7.1",
+    "react-image": "^4.1.0",
     "react-jsx-highcharts": "^5.0.0",
     "react-query": "^3.39.3",
     "react-responsive-carousel": "^3.2.23",
@@ -81,6 +83,7 @@
   "devDependencies": {
     "@types/cors": "^2.8.13",
     "@types/jquery": "^3.5.16",
+    "@types/js-cookie": "^3.0.3",
     "@types/react-datepicker": "^4.8.0",
     "@types/styled-components": "^5.1.26",
     "@types/styled-react-modal": "^1.2.2",

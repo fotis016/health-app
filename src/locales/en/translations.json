@@ -18,5 +18,11 @@
   "dutiesTableColumn3": "Address",
   "dutiesTableColumn4": "Phone",
   "dutiesTableColumn5": "Working Hours",
-  "dutiesPlaceholder": "Select"
+  "dutiesPlaceholder": "Select",
+  "newsApiCountry": "us",
+  "submitYourMessage": "Submit your message",
+  "contactDetails": "Contact Details",
+  "telephone": "telephone",
+  "name": "Name",
+  "message": "Message"
 }
