@@ -24,5 +24,6 @@
   "contactDetails": "Contact Details",
   "telephone": "telephone",
   "name": "Name",
-  "message": "Message"
+  "message": "Message",
+  "formSubmitted": "Your request has been submitted"
 }

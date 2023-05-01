@@ -4,9 +4,13 @@ import colors from "../theme";
 export const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
+  padding-top: 40px;
   padding-left: 35%;
   @media (max-width: 900px) {
     flex-direction: column;
+  }
+  @media (max-height: 800px) {
+    padding-top: 0px;
   }
   @media (max-width: 500px) {
     padding-left: 10%;
@@ -43,7 +47,8 @@ export const ButtonContainer = styled.div`
 export const ParagraphContainer = styled.div`
   display: flex;
   flex-direction: column;
-  padding-left: 37%;
+  align-items: center;
+  justify-content: center;
   @media (max-width: 500px) {
     padding-left: 10%;
   }
@@ -100,5 +105,21 @@ export const GraphContainer = styled.div`
   @media (max-width: 500px) {
     padding-left: 70px;
     padding-top: 10px;
+  }
+`;
+
+export const H2Alt = styled.p`
+  color: ${colors.primary[20]};
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  @media (min-width: 500px) {
+    display: none;
+  }
+`;
+export const H2 = styled.h2`
+  color: ${colors.primary[20]};
+  font-family: Open Sans, sans-serif;
+  @media (max-width: 500px) {
+    display: none;
   }
 `;

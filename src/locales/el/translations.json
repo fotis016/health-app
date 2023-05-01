@@ -24,5 +24,6 @@
   "contactDetails": "Στοιχεία επικοινωνίας",
   "telephone": "Τηλέφωνο",
   "name": "Όνομα",
-  "message": "Μήνυμα"
+  "message": "Μήνυμα",
+  "formSubmitted": "Το αίτημά σας έχει καταχωρηθεί."
 }

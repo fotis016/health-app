@@ -8,13 +8,21 @@ import {
   Label,
   MainContainer,
   MessageInput,
+  StyledModal,
+  ModalText,
   Paragraph,
   SecondaryContainer,
   SubmitInput,
 } from "./ContactStyles";
 import { useState } from "react";
 import axios from "axios";
+import { css } from "@emotion/css";
 
+const Message = css`
+  @media (max-width: 500px) {
+    width: 290px;
+  }
+`;
 export const ContactPage = () => {
   const [formData, setFormData] = useState({
     Name: "",
@@ -22,6 +30,12 @@ export const ContactPage = () => {
     Message: "",
   });
   const [showModal, setShowModal] = useState(false);
+
+  const beforeClose = () => {
+    return new Promise((resolve) => {
+      setTimeout(resolve, 300);
+    });
+  };
   const handleChange = (event: any) => {
     const { name, value } = event.target;
     setFormData((prevFormData) => ({
@@ -36,9 +50,11 @@ export const ContactPage = () => {
         access_key: "c22a5da5-8318-4269-a2e6-12b937f49309",
         ...formData,
       })
-      .then((response) => {
-        console.log("Form submitted successfully", response);
+      .then(() => {
         setShowModal(true);
+        setTimeout(() => {
+          setShowModal(false);
+        }, 3000);
       })
       .catch((error) => {
         console.error("Error submitting form", error);
@@ -48,15 +64,15 @@ export const ContactPage = () => {
   const { t } = useTranslation(["translation"]);
   return (
     <div className="container text-center  bg-black">
+      {showModal && (
+        <StyledModal isOpen={showModal} beforeClose={beforeClose}>
+          <ModalText>{t("formSubmitted")}</ModalText>
+        </StyledModal>
+      )}
       <MainContainer>
         <H1>{t("submitYourMessage")}</H1>
       </MainContainer>
       <MainContainer>
-        <ContactContainer>
-          <H2>{t("contactDetails")}</H2>
-          <Paragraph>Email: tottinos86@gmail.com</Paragraph>
-          <Paragraph>{t("telephone")}: +30 6907007937 </Paragraph>
-        </ContactContainer>
         <FormContainer>
           <form
             onSubmit={handleSubmit}
@@ -96,7 +112,7 @@ export const ContactPage = () => {
                   required
                 />
               </SecondaryContainer>
-              <SecondaryContainer style={{ gap: 30 }}>
+              <SecondaryContainer className={Message}>
                 <Label>{t("message")}</Label>
                 <MessageInput
                   id="message"
@@ -111,13 +127,12 @@ export const ContactPage = () => {
               </SecondaryContainer>
             </MainContainer>
           </form>
-          {showModal && (
-            <div>
-              <p>Form submitted successfully!</p>
-              <button onClick={() => setShowModal(false)}>Close</button>
-            </div>
-          )}
         </FormContainer>
+        <ContactContainer>
+          <H2>{t("contactDetails")}</H2>
+          <Paragraph>Email: tottinos86@gmail.com</Paragraph>
+          <Paragraph>{t("telephone")}: +30 6907007937 </Paragraph>
+        </ContactContainer>
       </MainContainer>
     </div>
   );

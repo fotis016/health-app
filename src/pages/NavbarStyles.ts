@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom"
-import styled from "styled-components"
-import colors from '../theme/'
-import {ReactComponent as Icon} from '../theme/icons/logo.svg'
-import { ReactComponent as FlagUK } from '../theme/icons/gb.svg';
-import { ReactComponent as FlagGR } from '../theme/icons/gr.svg';
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import colors from "../theme/";
+import { ReactComponent as Icon } from "../theme/icons/logo.svg";
+import { ReactComponent as FlagUK } from "../theme/icons/gb.svg";
+import { ReactComponent as FlagGR } from "../theme/icons/gr.svg";
 
 type NavbarProps = {
   extend: boolean;
@@ -80,14 +80,14 @@ export const Logo = styled(Icon)`
   @media (max-width: 700px) {
     display: none;
   }
-`
+`;
 export const GreeceFlag = styled(FlagGR)`
   height: 20px;
   width: 35px;
   @media (max-width: 700px) {
     display: none;
   }
-`
+`;
 
 export const UkFlag = styled(FlagUK)`
   height: 20px;
@@ -95,4 +95,15 @@ export const UkFlag = styled(FlagUK)`
   @media (max-width: 700px) {
     display: none;
   }
-`
+`;
+export const H2 = styled.h2`
+  color: ${colors.primary[20]};
+  font-family: Open Sans, sans-serif;
+`;
+
+export const Paragraph = styled.p`
+ color: ${colors.neutral.w};
+ font-weight: bold;
+ font-size:
+ font-family: Open Sans, sans-serif;
+`;

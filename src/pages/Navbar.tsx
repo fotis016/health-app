@@ -19,8 +19,9 @@ import {
   NavbarLinkExtended,
   GreeceFlag,
   UkFlag,
+  H2,
+  Paragraph,
 } from "./NavbarStyles";
-import { reload } from "firebase/auth";
 
 const Navbar = () => {
   const { t } = useTranslation(["translation"]);
@@ -32,11 +33,6 @@ const Navbar = () => {
   useEffect(() => {
     setExtendNavbar(false);
   }, [location]);
-
-  const reloadPage = () => {
-    console.log("reloaded");
-    window.location.reload();
-  };
 
   const [extendNavbar, setExtendNavbar] = useState(false);
   return (
@@ -105,6 +101,8 @@ const Navbar = () => {
               <FlagUK height={20} width={35} />
             </IconButton>
           )}
+          <Paragraph>Email: tottinos86@gmail.com</Paragraph>
+          <Paragraph>{t("telephone")}: +30 6907007937 </Paragraph>
         </ExtendedNavbar>
       )}
     </NavbarContainer>

@@ -1,13 +1,24 @@
 import styled from "styled-components";
 import colors from "../theme";
-
+import Modal from "styled-react-modal";
+export const StyledModal = Modal.styled`
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  padding-top: 210px;
+  height: 100vh;
+  width: 100%;
+  background-color: ${colors.primary[50]};
+  position: fixed;
+  transition: all 0.3s ease-in-out;
+`;
 export const FormContainer = styled.div`
   border-radius: 6px;
   width: 80%;
   margin-top: 20px;
   max-width: 800px;
   padding: 50px;
-  background: ${colors.primary[30]};
+  background-color: ${colors.primary[30]};
 `;
 
 export const Input = styled.input`
@@ -36,6 +47,8 @@ export const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-y: scroll;
+  overflow: hidden;
 `;
 
 export const ContactContainer = styled.div`
@@ -44,6 +57,9 @@ export const ContactContainer = styled.div`
   flex-direction: column;
   align-items: center;
   width: 10%;
+  @media (max-width: 700px) {
+    display: none;
+  }
 `;
 
 export const SecondaryContainer = styled.div`
@@ -97,8 +113,14 @@ export const H2 = styled.h2`
 `;
 
 export const Paragraph = styled.p`
- color: ${colors.neutral.w};
- font-weight: bold;
- font-size:
- font-family: Open Sans, sans-serif;
+  color: ${colors.neutral.w};
+  font-weight: bold;
+  font-family: Open Sans, sans-serif;
+`;
+
+export const ModalText = styled.p`
+  color: ${colors.neutral.w};
+  font-weight: bold;
+  font-size: 25px;
+  font-family: Open Sans, sans-serif;
 `;

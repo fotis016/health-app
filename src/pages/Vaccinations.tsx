@@ -14,6 +14,8 @@ import {
   ButtonContainer,
   DatePickersContainer,
   GraphContainer,
+  H2,
+  H2Alt,
   MainContainer,
   Paragraph,
   ParagraphContainer,
@@ -114,12 +116,13 @@ export const Vaccinations = () => {
   return (
     <>
       <ParagraphContainer>
-        <Paragraph>{t("statisticsHeader")}</Paragraph>
+        <H2Alt>{t("statisticsHeader")}</H2Alt>
+        <H2>{t("statisticsHeader")}</H2>
       </ParagraphContainer>
       <GraphContainer>
         <HighchartsReact highcharts={Highcharts} options={options} />
       </GraphContainer>
-      <MainContainer style={{ paddingTop: 40 }}>
+      <MainContainer>
         <DatePickersContainer>
           <SecondaryContainer data-testid="test">
             <Paragraph style={{ paddingRight: 10 }}>

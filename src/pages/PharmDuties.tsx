@@ -20,12 +20,17 @@ import {
   Paragraph,
   TableContainer,
 } from "./PharmDutiesStyles";
+import colors from "../theme";
 
 const pharmDutiesContainer = css`
   margin: 50px 90px;
   @media (max-width: 1000px) {
     margin: 10px;
   }
+`;
+const select = css`
+  border-radius: 5px;
+  color: black;
 `;
 const tableContainer = css`
   border-radius: 10px;
@@ -113,6 +118,23 @@ export const PharmDutiesPage = () => {
         <H1>{t("dutiesTitle")}</H1>
         <Paragraph>{t("dutiesDetails")}</Paragraph>
         <Select
+          styles={{
+            control: (baseStyles, state) => ({
+              ...baseStyles,
+              fontFamily: `"Open Sans", sans-serif`,
+            }),
+            placeholder: (baseStyles, state) => ({
+              ...baseStyles,
+              fontFamily: `"Open Sans", sans-serif`,
+            }),
+            menuList: (baseStyles, state) => ({
+              ...baseStyles,
+            }),
+            option: (baseStyles, state) => ({
+              ...baseStyles,
+              fontFamily: `"Open Sans", sans-serif`,
+            }),
+          }}
           placeholder={t("dutiesPlaceholder")}
           options={areas}
           onChange={(option) => handleChange(option)}
