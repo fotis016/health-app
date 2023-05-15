@@ -12,6 +12,10 @@ export const Header = styled.h1`
 
 export const Paragraph = styled.p`
   font-family: OpenSans-Regular, sans-serif;
+  color: ${colors.neutral.w};
+  @media (max-width: 700px) {
+    display: none;
+  }
 `;
 export const ContentContainer = styled.div`
   display: flex;
@@ -38,19 +42,22 @@ export const ImageContainer = styled.img`
 export const MainNewsContainer = styled.div`
   border-radius: 5px;
   display: flex;
-  padding: 15px;
+  padding: 55px;
   align-items: center;
   flex-direction: column;
-  gap: 20px;
+  gap: 60px;
   background-color: ${colors.primary[10]};
   overflow-y: scroll;
   overflow: hidden;
+  @media (max-width: 700px) {
+    gap: 40px;
+  }
 `;
 export const A = styled.a`
   text-decoration: underline;
-  color: ${colors.neutral.b};
+  color: ${colors.neutral.w};
   font-family: "OpenSans-Regular, sans-serif";
   &:visited {
-    color: ${colors.neutral.b};
+    color: ${colors.neutral.w};
   }
 `;

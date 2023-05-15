@@ -1,7 +1,7 @@
+/** @jsxImportSource @emotion/react */
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
 // import { Paragraph } from "./Homestyles"
 // import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
 // import img1 from '../theme/icons/pic1.jpg'
@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Carousel } from "react-responsive-carousel";
 import { css } from "@emotion/css";
+import { css as CSS } from "@emotion/react";
 import { Img } from "react-image";
 import moment from "moment";
 import {
@@ -38,19 +39,67 @@ interface NewsData {
   publishedAt: string;
   url: string;
 }
+interface NewsItemProps {
+  backgroundImage?: string;
+  children?: React.ReactNode;
+}
 
+const NewsItem: React.FC<NewsItemProps> = ({ backgroundImage, children }) => {
+  const newsItemStyles = CSS`
+    border-radius: 6px;
+    padding: 10px;
+    background-color: ${colors.primary[30]};
+    width: 740px;
+    height: 450px;
+    flex-direction: row;
+    align-items: center;
+    display: flex;
+    background-image: url(${backgroundImage});
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @media (max-width: 700px) {
+      height: 120px;
+      width: 500px;
+    }
+  `;
+
+  const getRandomQueryParameter = () => {
+    return `timestamp=${Date.now()}`;
+  };
+  const fallbackImage =
+    "https://umaine.edu/news/wp-content/uploads/sites/3/2019/09/One-Health-news-feature.jpg";
+  const fallbackImageUrl = `${fallbackImage}?${getRandomQueryParameter()}`;
+
+  return (
+    <div
+      css={newsItemStyles}
+      style={{
+        backgroundImage: backgroundImage
+          ? `url(${backgroundImage})`
+          : `url(${fallbackImageUrl})`,
+      }}
+    >
+      {children}{" "}
+    </div>
+  );
+};
 const newsItem = css`
   border-radius: 6px;
   padding: 10px;
-  background-color: ${colors.primary[30]};
+  margin-top: 250px;
+  background-color: ${colors.primary[60]};
   width: 800px;
   height: 120px;
   flex-direction: row;
   align-items: center;
+  align-self: center;
   display: flex;
   @media (max-width: 700px) {
-    height: 120px;
+    height: 70px;
     width: 500px;
+    margin-top: 50px;
   }
 `;
 const newsMainContainer = css`
@@ -59,8 +108,8 @@ const newsMainContainer = css`
   flex-direction: column;
   margin-left: 50px;
   @media (max-width: 700px) {
-    height: 120px;
-    width: 400px;
+    height: 80px;
+    width: 300px;
   }
 `;
 const newsImageContainer = css`
@@ -76,6 +125,8 @@ const newsImageContainer = css`
 `;
 
 const newsTimePostedContainer = css`
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
   width: 100px;
   height: 120px;
@@ -85,8 +136,7 @@ const newsTimePostedContainer = css`
     display: none;
   }
 `;
-const placeHolderImage =
-  "https://umaine.edu/news/wp-content/uploads/sites/3/2019/09/One-Health-news-feature.jpg";
+
 export const HomePage = () => {
   const { t } = useTranslation(["translation"]);
   const [newsData, setNewsData] = useState([]);
@@ -131,23 +181,26 @@ export const HomePage = () => {
       <Scrollbar>
         <MainNewsContainer>
           {newsData.map((newsData: NewsData) => (
-            <div className={newsItem}>
-              <div className={newsImageContainer}>
-                <Img
-                  style={{ float: "left" }}
-                  width={100}
-                  height={75}
-                  src={[newsData.urlToImage, placeHolderImage]}
-                  alt="news"
-                />
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "flex-start",
-                    height: 20,
-                    width: 90,
-                  }}
-                >
+            <NewsItem backgroundImage={newsData.urlToImage}>
+              <div className={newsItem}>
+                <div className={newsMainContainer}>
+                  <A
+                    href={newsData.url}
+                    target="_blank"
+                    style={{
+                      fontSize: 20,
+                      textAlign: "start",
+                    }}
+                  >
+                    {newsData.title}
+                  </A>
+                  {newsData.description && (
+                    <Paragraph style={{ fontSize: 14, textAlign: "start" }}>
+                      {truncateString(newsData.description)}
+                    </Paragraph>
+                  )}
+                </div>
+                <div className={newsTimePostedContainer}>
                   <Paragraph
                     style={{
                       fontSize: 14,
@@ -156,33 +209,18 @@ export const HomePage = () => {
                   >
                     {newsData.source.name}
                   </Paragraph>
+                  <Paragraph
+                    style={{
+                      fontSize: 14,
+                      textAlign: "center",
+                      marginTop: 60,
+                    }}
+                  >
+                    {moment(newsData.publishedAt).utc().format("DD-MM-YYYY")}
+                  </Paragraph>
                 </div>
               </div>
-              <div className={newsMainContainer}>
-                <A
-                  href={newsData.url}
-                  target="_blank"
-                  style={{
-                    fontSize: 20,
-                    textAlign: "start",
-                  }}
-                >
-                  {newsData.title}
-                </A>
-                {newsData.description && (
-                  <Paragraph style={{ fontSize: 14, textAlign: "start" }}>
-                    {truncateString(newsData.description)}
-                  </Paragraph>
-                )}
-              </div>
-              <div className={newsTimePostedContainer}>
-                <Paragraph
-                  style={{ fontSize: 14, textAlign: "center", marginTop: 100 }}
-                >
-                  {moment(newsData.publishedAt).utc().format("DD-MM-YYYY")}
-                </Paragraph>
-              </div>
-            </div>
+            </NewsItem>
           ))}
         </MainNewsContainer>
       </Scrollbar>
