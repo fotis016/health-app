@@ -1,5 +1,4 @@
 import "react-datepicker/dist/react-datepicker.css";
-
 import { useState } from "react";
 import { css } from "@emotion/css";
 import Highcharts from "highcharts";
@@ -8,7 +7,7 @@ import $ from "jquery";
 import moment from "moment";
 import DatePicker from "react-datepicker";
 import { useTranslation } from "react-i18next";
-
+import colors from "../theme";
 import {
   Button,
   ButtonContainer,
@@ -21,7 +20,6 @@ import {
   ParagraphContainer,
   SecondaryContainer,
 } from "./VaccinationsStyles";
-import colors from "../theme";
 
 const datePicker = css`
   height: 25px;

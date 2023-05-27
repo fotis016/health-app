@@ -20,17 +20,12 @@ import {
   Paragraph,
   TableContainer,
 } from "./PharmDutiesStyles";
-import colors from "../theme";
 
 const pharmDutiesContainer = css`
   margin: 50px 90px;
   @media (max-width: 1000px) {
     margin: 10px;
   }
-`;
-const select = css`
-  border-radius: 5px;
-  color: black;
 `;
 const tableContainer = css`
   border-radius: 10px;

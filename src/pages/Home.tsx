@@ -2,24 +2,15 @@
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-// import { Paragraph } from "./Homestyles"
-// import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
-// import img1 from '../theme/icons/pic1.jpg'
-// import Carousel from "react-responsive-carousel/lib/ts/components/Carousel"
-// import { Carousel } from '@sefailyasoz/react-carousel'
 import { useEffect, useState } from "react";
 
 import { useTranslation } from "react-i18next";
-import { Carousel } from "react-responsive-carousel";
 import { css } from "@emotion/css";
 import { css as CSS } from "@emotion/react";
-import { Img } from "react-image";
 import moment from "moment";
 import {
   A,
   Header,
-  ImageContainer,
-  ImageWrapper,
   MainContainer,
   MainNewsContainer,
   Paragraph,
@@ -112,18 +103,6 @@ const newsMainContainer = css`
     width: 300px;
   }
 `;
-const newsImageContainer = css`
-  flex-direction: column;
-  width: 100px;
-  height: 120px;
-  padding: 15px;
-  margin-top: 10px;
-  display: flex;
-  @media (max-width: 700px) {
-    display: none;
-  }
-`;
-
 const newsTimePostedContainer = css`
   justify-content: center;
   align-items: center;

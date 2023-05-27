@@ -19,7 +19,6 @@ import {
   NavbarLinkExtended,
   GreeceFlag,
   UkFlag,
-  H2,
   Paragraph,
 } from "./NavbarStyles";
 
